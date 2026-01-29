@@ -20,5 +20,8 @@
   "homepage": "https://github.com/SamuelM007/pizza-winter26#readme",
   "dependencies": {
     "express": "^5.2.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.11"
   }
 }
