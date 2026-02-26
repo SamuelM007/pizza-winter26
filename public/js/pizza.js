@@ -1,9 +1,9 @@
 document.getElementById("pizza-form").onsubmit = () => {
   clearErrors();
+
   let isValid = true;
 
   //Validate first name
-
   let fname = document.getElementById("fname").value.trim();
   if (!fname) {
     document.getElementById("err-fname").style.display = "block";
@@ -24,7 +24,14 @@ document.getElementById("pizza-form").onsubmit = () => {
     isValid = false;
   }
 
-  //Validate email
+  //Validate pizza size
+  let size = document.getElementById("size").value;
+  if (size == "none") {
+    document.getElementById("err-size").style.display = "block";
+    isValid = false;
+  }
+
+  //Validate method
   let pickup = document.getElementById("pickup");
   let delivery = document.getElementById("delivery");
   if (!pickup.checked && !delivery.checked) {
@@ -32,16 +39,24 @@ document.getElementById("pizza-form").onsubmit = () => {
     isValid = false;
   }
 
-  //Validate size
-  let size = document.getElementById("size").value.trim();
-  if (size == "none") {
-    document.getElementById("err-size").style.display = "block";
-    isValid = false;
-  }
+  /*
+    let methodButtons = document.getElementsByName("method");
+    let count = 0;
+    for (let i=0; i<methodButtons.length; i++) {
+        if (methodButtons[i].checked) {
+            count++;
+        }
+    }
+    if (count === 0) {
+        document.getElementById("err-method").style.display = "block";
+        isValid = false;
+    }
+    */
 
   return isValid;
 };
 
+/* Clear all error messages when form is submitted */
 function clearErrors() {
   let errors = document.getElementsByClassName("err");
   for (let i = 0; i < errors.length; i++) {
